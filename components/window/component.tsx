@@ -1,0 +1,56 @@
+function MacOSWindow({
+  children,
+  full = false,
+  size = 1,
+}: {
+  children?: React.ReactNode;
+  full?: boolean;
+  size?: number;
+}): JSX.Element {
+  return (
+    <div
+      className={`border border-white rounded-3xl overflow-hidden`}
+      style={{
+        width: full ? "100%" : `${size}%`,
+        height: full ? "100%" : `${size}%`,
+      }}
+    >
+      <div
+        className="h-6 flex justify-between"
+        style={{
+          width: size <= 10 ? `10px` : "4%",
+          marginTop: size >= 50 ? `${16 * (size / 100)}px` : "10px",
+          marginLeft: size >= 50 ? `${30 * (size / 100)}px` : "12px",
+        }}
+      >
+        <div
+          className={` rounded-full bg-[#FC5753] border-[#DF4744] hover:bg-[#DF4744] hover:cursor-pointer`}
+          style={{
+            width:  `${16 * (size / 100)}px` ,
+            height: `${16 * (size / 100)}px` ,
+            borderWidth: size >= 10 ? `1px` : "",
+          }}
+        />
+        <div
+          className={` bg-[#FDBF2D] border-[#E0A12D] rounded-full hover:bg-[#E0A12D] hover:cursor-pointer`}
+          style={{
+            width:  `${16 * (size / 100)}px` ,
+            height: `${16 * (size / 100)}px` ,
+            borderWidth: size >= 10 ? `1px` : "",
+          }}
+        />
+        <div
+          className={`bg-[#2ED47A] border-[#1FB86B] rounded-full hover:bg-[#1FB86B] hover:cursor-pointer`}
+          style={{
+            width:  `${16 * (size / 100)}px` ,
+            height: `${16 * (size / 100)}px` ,
+            borderWidth: size >= 10 ? `1px` : "",
+          }}
+        />
+      </div>
+      {children}
+    </div>
+  );
+}
+
+export default MacOSWindow;
