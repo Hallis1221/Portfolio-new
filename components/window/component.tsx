@@ -32,6 +32,16 @@ function MacOSWindow({
             height: `${16 * (size / 100)}px` ,
             borderWidth: size >= 10 ? `1px` : "",
           }}
+          onClick={
+            () => {
+              function scrollTo(pos: number){
+                console.log(pos);
+                window.scrollTo(0, pos);
+                if (pos > 0) setTimeout(() => scrollTo(pos - 10), 1);
+              }
+              scrollTo(window.scrollY - 1);
+            }
+          }
         />
         <div
           className={` bg-[#FDBF2D] border-[#E0A12D] rounded-full hover:bg-[#E0A12D] hover:cursor-pointer`}

@@ -1,4 +1,5 @@
 import { MotionValue, motion } from "framer-motion";
+import { useState } from "react";
 import MacOSWindow from "../../window/component";
 
 function AnimatedOverviewTile({
@@ -14,21 +15,32 @@ function AnimatedOverviewTile({
   y: MotionValue;
   children: JSX.Element;
 }): JSX.Element {
+  const [initialScale, setInitialScale] = useState(scale.get());
   return (
-    <div className="absolute">
+    <div className="absolute hover:z-50 ">
       <div
+  
+     
         style={{
           width: "100%",
           height: "100%",
           position: "fixed",
           display: "flex",
           pointerEvents: "none",
-          zIndex: 150,
         }}
+        
       >
         <div className="h-full w-full flex-grow-0 absolute pointer-events-none" />
 
         <motion.div
+        
+          onHoverStart={(e) => {
+            setInitialScale(scale.get());
+            scale.set(initialScale + 0.01);
+          }}
+          onHoverEnd={(e) => {
+            scale.set(initialScale);
+          }}
           style={{
             scale,
             x,

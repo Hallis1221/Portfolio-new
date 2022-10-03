@@ -13,9 +13,13 @@ function AnimatedLanding({
   const size = 100;
 
   return (
+    <div
+    className="bg-red-500"
+  >
     <AnimatedOverviewTile scale={scale} x={x} y={y} size={size}>
     <text
       className="font-extrabold text-9xl"
+     
       style={{
         lineHeight: "1",
         fontSize: `${8 * (size / 100)}rem`,
@@ -24,6 +28,7 @@ function AnimatedLanding({
       Hi, I am Halvor
     </text>
   </AnimatedOverviewTile>
+  </div>
   );
 }
 
