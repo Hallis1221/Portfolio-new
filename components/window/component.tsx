@@ -1,15 +1,17 @@
 function MacOSWindow({
   children,
   full = false,
-  size = 1,
+  size = 100,
+
 }: {
   children?: React.ReactNode;
   full?: boolean;
   size?: number;
+
 }): JSX.Element {
   return (
     <div
-      className={`border border-white rounded-3xl overflow-hidden`}
+      className={`border border-white rounded-3xl overflow-hidden bg-[#2A303C] `}
       style={{
         width: full ? "100%" : `${size}%`,
         height: full ? "100%" : `${size}%`,
