@@ -9,7 +9,13 @@ const Home: NextPage = () => {
   const { scrollYProgress } = useScroll();
 
   return (
-    <div className="w-[90vw] h-[300vh] overflow-x-hidden  p-0 m-0 ">
+    <div className="w-[90vw] h-[300vh] overflow-x-hidden  p-0 m-0 "
+    style={
+      {
+        zoom: 0.8,
+      }
+    }
+    >
       <AnimatedLandingOverview scrollYProgress={scrollYProgress} />
       <AnimatedBlogOverview scrollYProgress={scrollYProgress} />
       <ResumeOverview scrollYProgress={scrollYProgress} />

@@ -16,7 +16,9 @@ function AnimatedLanding({
     <div
     className="bg-red-500"
   >
-    <AnimatedOverviewTile scale={scale} x={x} y={y} size={size}>
+    <AnimatedOverviewTile scale={scale} x={x} y={y} size={size}
+    destination="/"
+    >
     <text
       className="font-extrabold text-9xl"
      

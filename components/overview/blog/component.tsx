@@ -13,7 +13,9 @@ function AnimatedBlogOverview({
   const size = 100;
 
   return (
-    <AnimatedOverviewTile scale={scale} x={x} y={y} size={size}>
+    <AnimatedOverviewTile scale={scale} x={x} y={y} size={size}
+    destination="/blog"
+    >
     <text
       className="font-extrabold text-9xl"
       style={{

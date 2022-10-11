@@ -13,7 +13,9 @@ function ResumeOverview({
   const size = 100;
 
   return (
-    <AnimatedOverviewTile scale={scale} x={x} y={y} size={size}>
+    <AnimatedOverviewTile scale={scale} x={x} y={y} size={size}
+    destination="/resume"
+    >
     <text
       className="font-extrabold text-9xl"
       style={{

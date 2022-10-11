@@ -1,4 +1,5 @@
 import { MotionValue, motion } from "framer-motion";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import MacOSWindow from "../../window/component";
 
@@ -8,19 +9,20 @@ function AnimatedOverviewTile({
   x,
   y,
   children,
+  destination,
 }: {
   size: number;
   scale: MotionValue;
   x: MotionValue;
   y: MotionValue;
   children: JSX.Element;
+  destination: string;
 }): JSX.Element {
-  const [initialScale, setInitialScale] = useState(scale.get());
+  const router = useRouter();
+  const [isClicked, setIsClicked] = useState(false);
   return (
     <div className="absolute hover:z-50 ">
       <div
-  
-     
         style={{
           width: "100%",
           height: "100%",
@@ -28,19 +30,29 @@ function AnimatedOverviewTile({
           display: "flex",
           pointerEvents: "none",
         }}
-        
       >
         <div className="h-full w-full flex-grow-0 absolute pointer-events-none" />
 
         <motion.div
-        
-          onHoverStart={(e) => {
-            setInitialScale(scale.get());
-            scale.set(initialScale + 0.01);
-          }}
-          onHoverEnd={(e) => {
-            scale.set(initialScale);
-          }}
+          
+          animate={
+            {
+              scale: isClicked ? 1.1 : scale.get(),
+              x: isClicked ? 0 : x.get(),
+              y: isClicked ? 0 : y.get(),
+              padding: isClicked ? 0 : "1px",
+              transition: {
+                duration: 0.5
+              }
+            }
+          }
+          onTapStart={() => 
+          {
+            setIsClicked(true);
+            setTimeout(() => {
+            router.push(destination)
+          }, 250)}
+          }
           style={{
             scale,
             x,
