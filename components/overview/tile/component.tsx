@@ -34,25 +34,30 @@ function AnimatedOverviewTile({
         <div className="h-full w-full flex-grow-0 absolute pointer-events-none" />
 
         <motion.div
-          
-          animate={
-            {
-              scale: isClicked ? 1.1 : scale.get(),
-              x: isClicked ? 0 : x.get(),
-              y: isClicked ? 0 : y.get(),
-              padding: isClicked ? 0 : "1px",
-              transition: {
-                duration: 0.5
-              }
+          animate={{
+            scale: isClicked ? 1 : undefined,
+            x: isClicked ? 0 : undefined,
+            y: isClicked ? 0 : undefined,
+            zIndex: isClicked ? 50 : undefined,
+            padding: isClicked ? 0 : "1px",
+            transition: {
+              duration: 0.5,
+              ease: "easeIn",
+              bounce: 0.5,
+            },
+          }}
+          onTapStart={() => {
+            if (destination === "/" && router.pathname === "/") {
+              scrollTo(window.scrollY - 1);
             }
-          }
-          onTapStart={() => 
-          {
             setIsClicked(true);
             setTimeout(() => {
-            router.push(destination)
-          }, 250)}
-          }
+              router.push(destination);
+              setTimeout(() => {
+                setIsClicked(false);
+              }, 500);
+            }, 500);
+          }}
           style={{
             scale,
             x,
@@ -80,5 +85,9 @@ function AnimatedOverviewTile({
     </div>
   );
 }
-
+function scrollTo(pos: number) {
+  console.log(pos);
+  window.scrollTo(0, pos);
+  if (pos > 0) setTimeout(() => scrollTo(pos - 10), 1);
+}
 export default AnimatedOverviewTile;
