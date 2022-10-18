@@ -38,14 +38,14 @@ const ProjectsPage = () => {
               initial="hidden"
               animate="visible"
             >
-              <ProjectTile title="学中文" />
-              <ProjectTile title="学中文" />
-              <ProjectTile title="学中文" />
-              <ProjectTile title="学中文" />
-              <ProjectTile title="学中文" />
-              <ProjectTile title="学中文" />
-              <ProjectTile title="学中文" />
-              <ProjectTile title="学中文" />
+              <ProjectTile title="学中文" img={""} />
+              <ProjectTile title="MADS" img={"https://www.marketads.me/favicon.ico"} />
+              <ProjectTile title="PORTFOLIO" img={""} />
+              <ProjectTile title="TOOLFRAME" img={""} />
+              <ProjectTile title="学中文" img={""} />
+              <ProjectTile title="学中文" img={""} />
+              <ProjectTile title="学中文" img={""} />
+              <ProjectTile title="学中文" img={""} />
             </motion.ul>
           </div>
 
@@ -65,7 +65,7 @@ const ProjectsPage = () => {
               className="mx-2 mb-5 text-2xl font-semibold"
               variants={{
                 hidden: {
-                  y: "200%",
+                  y: 200,
                   color: "transparent",
                   transition: {
                     ease: [0.455, 0.03, 0.515, 0.955],
@@ -114,7 +114,13 @@ const ProjectsPage = () => {
   );
 };
 
-function ProjectTile({ title }: { title: string }) {
+function ProjectTile({
+  title,
+  img,
+}: {
+  title: string;
+  img?: string | undefined;
+}) {
   return (
     <motion.li
       className="flex flex-col mx-2"
@@ -130,13 +136,13 @@ function ProjectTile({ title }: { title: string }) {
       }}
     >
       <div className="rounded-md overflow-hidden bg-red-50 h-24 w-24">
-        <Image
-          src="https://images.unsplash.com/photo-1665510392901-2ca57b159f9d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-          width={100}
-          height={100}
-          layout="responsive"
-          alt=""
-        />
+        {img ? (
+          <Image src={img} layout="fill" objectFit="cover" />
+        ) : (
+          <div className="text-black font-extrabold h-full flex justify-center items-center bg-gradient-to-tr from-purple-600 to-pink-500">
+            {title}
+          </div>
+        )}
       </div>
       <div className="rounded-md overflow-clip w-24 h-5 text-center mt-1">
         {title}
