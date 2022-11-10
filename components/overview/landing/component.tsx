@@ -27,7 +27,7 @@ function AnimatedLanding({
         fontSize: `${8 * (size / 100)}rem`,
       }}
     >
-      Hi, I am Halvor
+ skroll nedover
     </text>
   </AnimatedOverviewTile>
   </div>
