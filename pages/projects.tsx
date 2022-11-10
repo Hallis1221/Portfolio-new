@@ -39,13 +39,14 @@ const ProjectsPage = () => {
               animate="visible"
             >
               <ProjectTile title="学中文" img={""} />
-              <ProjectTile title="MADS" img={"https://www.marketads.me/favicon.ico"} />
+              <ProjectTile
+                title="MADS"
+                img={""}
+              />
               <ProjectTile title="PORTFOLIO" img={""} />
               <ProjectTile title="TOOLFRAME" img={""} />
-              <ProjectTile title="学中文" img={""} />
-              <ProjectTile title="学中文" img={""} />
-              <ProjectTile title="学中文" img={""} />
-              <ProjectTile title="学中文" img={""} />
+              <ProjectTile title="UKEPLANR" img={""} />
+              <ProjectTile title="MODLAR" img={""} />
             </motion.ul>
           </div>
 
@@ -186,6 +187,10 @@ function BlogTile({}: {}) {
       </div>
     </motion.li>
   );
+}
+
+export async function getServersideProps() {
+  return {};
 }
 
 export default ProjectsPage;
